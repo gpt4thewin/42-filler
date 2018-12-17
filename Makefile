@@ -6,18 +6,19 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2018/12/17 13:39:20 by juazouz          ###   ########.fr        #
+#    Updated: 2018/12/17 16:45:26 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I $(IDIR) -I $(LIBFTDIR) -g
+CFLAGS = -Wall -Wextra -Werror -I $(IDIR) -I $(LIBFTIDIR) -g
 
 IDIR = includes
 SDIR = srcs
 ODIR = obj
 LIBFTDIR = libft
+LIBFTIDIR = $(LIBFTDIR)/includes
 LIBFT = libft.a
 
 NAME = filler
@@ -29,14 +30,24 @@ OBJ = $(patsubst %.c,$(ODIR)/%.o,$(_SRC)) \
 
 SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
 
-_SRC =	\
+_SRC =	board/board_free.c \
+		board/board_init.c \
+		board/can_place.c \
+		board/get_cell_at.c \
+		board/in_bounds.c \
+		board/set_cell_at.c \
+		error.c \
+		main.c \
+		parse/assert_input.c \
+		parse/read_head.c \
+		piece/parse_piece.c
 
 .PHONY: all clean fclean re
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $@ $^
+	$(CC) $^ -o $@
 
 $(LIBFTDIR)/$(LIBFT):
 	make -C $(LIBFTDIR)
