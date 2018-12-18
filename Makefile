@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2018/12/17 16:45:26 by juazouz          ###   ########.fr        #
+#    Updated: 2018/12/18 17:38:00 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,11 +36,19 @@ _SRC =	board/board_free.c \
 		board/get_cell_at.c \
 		board/in_bounds.c \
 		board/set_cell_at.c \
+		board/board_print.c \
 		error.c \
 		main.c \
-		parse/assert_input.c \
 		parse/read_head.c \
-		piece/parse_piece.c
+		utils/check_eq.c \
+		utils/check_input.c \
+		utils/check_is_true.c \
+		utils/check_strncmp.c \
+		utils/check_read_str.c \
+		parse/parse_board.c \
+		parse/parse_number.c \
+		parse/parse_number_n.c \
+		parse/read_head.c \
 
 .PHONY: all clean fclean re
 

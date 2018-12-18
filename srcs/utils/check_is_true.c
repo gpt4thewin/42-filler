@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   assert_input.c                                     :+:      :+:    :+:   */
+/*   check_is_true.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 16:12:59 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/17 17:13:02 by juazouz          ###   ########.fr       */
+/*   Created: 2018/12/17 19:23:58 by juazouz           #+#    #+#             */
+/*   Updated: 2018/12/18 13:28:26 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "filler.h"
 
-/*
-**	Reads on the standard input and verifies that it matches the specified
-**	string. Does not read beyond the string len.
-*/
-
-void	assert_input(char *str)
+void	check_is_true(int val, char *msg)
 {
-	int		i;
-	char	c;
-
-	i = 0;
-	while (str[i])
-	{
-		if (read(STDIN_FILENO, &c, 1) <= 0)
-			error(MSG_READ_ERROR);
-		if (c != str[i])
-			error(MSG_PARSE_ASSERT_ERROR);
-		i++;
-	}
+	if (!val)
+		error(msg);
 }

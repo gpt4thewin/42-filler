@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/17 17:12:55 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/18 17:38:00 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,25 @@ int		parse_piece(t_piece **piece);
 **	Parse.
 */
 
+int		parse_number(char *str, int *pos);
+int		parse_number_n(char *str, int *pos, int n);
 void	read_head(int *id, char *name);
-void	assert_input(char *str);
+void	parse_board(t_board *board);
+
+/*
+**	Assert.
+*/
+
+void	check_input(char *str);
+void	check_strncmp(char *s1, char *s2, unsigned int n, char *msg);
+void	check_eq(int a, int b, char *msg);
+void	check_is_true(int val, char *msg);
+void	check_read_str(char *expected, char *str, int *pos);
+
+/*
+**	Debug.
+*/
+
+void	board_print(t_board *board);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 16:24:06 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/17 18:28:40 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/18 17:38:00 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	read_name(char *name)
 	int		state;
 	size_t	len;
 
-	assert_input("[");
+	check_input("[");
 	len = 0;
 	while ((state = read(STDIN_FILENO, &c, sizeof(c))) && c != ']')
 	{
@@ -58,9 +58,9 @@ static void	read_name(char *name)
 
 void		read_head(int *id, char *name)
 {
-	assert_input("$$$ exec p");
+	check_input("$$$ exec p");
 	*id = read_number();
-	assert_input(" : ");
+	check_input(" : ");
 	read_name(name);
-	assert_input("\n");
+	check_input("\n");
 }

@@ -1,13 +1,11 @@
 obj/
 *.o
+*.a
 *.stackdump
 .vscode
 .*.swp
 test.sh
 tests/
-libft/libft.a
-main.c
-libftprintf.a
 a.out
 *.dSYM/
 resources/

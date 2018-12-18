@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 23:18:06 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/17 13:20:20 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/17 18:33:14 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ void			ft_putendl(char const *s);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr(int n);
 void			ft_putnbr_fd(int n, int fd);
+
+/*
+**	Input.
+*/
+
+int				get_next_line(const int fd, char **line);
 
 /*
 **	Memory.
