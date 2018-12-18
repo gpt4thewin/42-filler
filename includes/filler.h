@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/18 17:38:00 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/18 19:53:48 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 **	Types.
 */
 
+typedef struct s_point	t_point;
 typedef struct s_board	t_board;
 typedef struct s_piece	t_piece;
 typedef struct s_point	t_point;
@@ -49,8 +50,16 @@ struct	s_board
 
 struct	s_piece
 {
+	int		height;
+	int		width;
 	int		size;
 	char	*cells;
+};
+
+struct s_point
+{
+	int		x;
+	int		y;
 };
 
 /*
@@ -63,8 +72,8 @@ void	error(char *msg);
 **	Utils.
 */
 
-void	board_free(t_board *board);
 void	board_init(t_board *board, int height, int width);
+void	board_free(t_board *board);
 int		can_place(t_board *map, t_board *small, int x, int y);
 char	get_cell_at(t_board *board, int x, int y);
 void	set_cell_at(t_board *board, int x, int y, char val);
@@ -74,7 +83,7 @@ int		in_bounds(t_board *board, int x, int y);
 **	Piece.
 */
 
-int		parse_piece(t_piece **piece);
+void	piece_init(t_piece *piece, int height, int width);
 
 /*
 **	Parse.
@@ -84,6 +93,7 @@ int		parse_number(char *str, int *pos);
 int		parse_number_n(char *str, int *pos, int n);
 void	read_head(int *id, char *name);
 void	parse_board(t_board *board);
+void	parse_piece(t_board *board);
 
 /*
 **	Assert.
@@ -94,6 +104,7 @@ void	check_strncmp(char *s1, char *s2, unsigned int n, char *msg);
 void	check_eq(int a, int b, char *msg);
 void	check_is_true(int val, char *msg);
 void	check_read_str(char *expected, char *str, int *pos);
+void	check_str_end(char *str, int *pos);
 
 /*
 **	Debug.
