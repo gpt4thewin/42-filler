@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_move.c                                       :+:      :+:    :+:   */
+/*   expect_input_lineend.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/19 12:27:39 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 18:13:28 by juazouz          ###   ########.fr       */
+/*   Created: 2018/12/19 16:52:03 by juazouz           #+#    #+#             */
+/*   Updated: 2018/12/19 16:55:00 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "filler.h"
 
-void	write_move(t_point *move)
+void	expect_input_lineend()
 {
-	ft_putnbr(move->x);
-	ft_putchar(' ');
-	ft_putnbr(move->y);
-	ft_putchar('\n');
+	expect_input_char('\n');
 }

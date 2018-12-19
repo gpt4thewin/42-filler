@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2018/12/19 14:09:07 by juazouz          ###   ########.fr        #
+#    Updated: 2018/12/19 17:40:17 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,6 @@ _SRC =	board/board_free.c \
 		main.c \
 		parse/read_head.c \
 		utils/check_eq.c \
-		utils/check_input.c \
 		utils/check_is_true.c \
 		utils/check_strncmp.c \
 		utils/check_read_str.c \
@@ -54,7 +53,13 @@ _SRC =	board/board_free.c \
 		parse/parse_piece.c \
 		parse/read_head.c \
 		move/compute_move.c \
-		move/write_move.c
+		move/write_move.c \
+		input/expect_input_char.c \
+		input/expect_input_lineend.c \
+		input/expect_input_str.c \
+		input/read_char.c \
+		input/read_number.c \
+		input/read_number_n.c
 
 .PHONY: all clean fclean re
 

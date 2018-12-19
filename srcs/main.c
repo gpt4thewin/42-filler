@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:41:57 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 12:46:22 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/19 18:38:23 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int			main(int argc, char *argv[])
 	t_board	board;
 	t_board	piece;
 	t_point	move;
+	// int		stop = 1;
 
 	(void)argc;
 	(void)argv;
@@ -36,6 +37,8 @@ int			main(int argc, char *argv[])
 			break ;
 		}
 		write_move(&move);
+		// while (stop)
+		// 	;
 	}
 	return (0);
 }

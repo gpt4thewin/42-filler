@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 14:07:13 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/19 17:42:41 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define MSG_READ_ERROR "Read error"
 # define MSG_PARSE_ERROR_HEAD "Parse error (Invalid head)"
 # define MSG_PARSE_ERROR "Parse error"
-# define MSG_PARSE_ASSERT_ERROR "Parse assert error"
+// # define MSG_PARSE_ASSERT_ERROR "Parse assert error"
 
 /*
 **	Types.
@@ -82,6 +82,17 @@ int		get_next_cell(t_board *board, t_point *point);
 void	read_next_line(char **line);
 
 /*
+**	Input.
+*/
+
+char	read_char();
+void	expect_input_char(char expected);
+void	expect_input_str(char *str);
+void	expect_input_lineend();
+int		read_number_n(int n);
+int		read_number(char endchar);
+
+/*
 **	Piece.
 */
 
@@ -91,8 +102,6 @@ void	piece_init(t_piece *piece, int height, int width);
 **	Parse.
 */
 
-int		parse_number(char *str, int *pos);
-int		parse_number_n(char *str, int *pos, int n);
 void	read_head(int *id, char *name);
 void	parse_board(t_board *board);
 void	parse_piece(t_board *board);
@@ -101,12 +110,9 @@ void	parse_piece(t_board *board);
 **	Assert.
 */
 
-void	check_input(char *str);
 void	check_strncmp(char *s1, char *s2, unsigned int n, char *msg);
 void	check_eq(int a, int b, char *msg);
 void	check_is_true(int val, char *msg);
-void	check_read_str(char *expected, char *str, int *pos);
-void	check_str_end(char *str, int *pos);
 
 /*
 **	Debug.
