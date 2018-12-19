@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 17:45:04 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/18 19:59:47 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/19 14:08:08 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static void	parse_head(t_board *board)
 	int		height;
 	int		width;
 
-	if (get_next_line(STDIN_FILENO, &line) <= 0)
-		error(MSG_READ_ERROR);
+	read_next_line(&line);
 	pos = 0;
 	check_read_str("Piece ", line, &pos);
 	height = parse_number(line, &pos);
@@ -29,6 +28,7 @@ static void	parse_head(t_board *board)
 	check_read_str(":", line, &pos);
 	check_str_end(line, &pos);
 	board_init(board, height, width);
+	free(line);
 }
 
 static void	parse_line(t_board *board, int lineno)
@@ -36,8 +36,7 @@ static void	parse_line(t_board *board, int lineno)
 	char	*line;
 	int		i;
 
-	if (get_next_line(STDIN_FILENO, &line) <= 0)
-		error(MSG_READ_ERROR);
+	read_next_line(&line);
 	i = 0;
 	while (i < board->width)
 	{
@@ -50,6 +49,7 @@ static void	parse_line(t_board *board, int lineno)
 		i++;
 	}
 	check_str_end(line, &i);
+	free(line);
 }
 
 void		parse_piece(t_board *board)

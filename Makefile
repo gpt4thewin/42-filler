@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2018/12/18 19:50:34 by juazouz          ###   ########.fr        #
+#    Updated: 2018/12/19 14:09:07 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ _SRC =	board/board_free.c \
 		board/in_bounds.c \
 		board/set_cell_at.c \
 		board/board_print.c \
+		board/get_next_cell.c \
 		error.c \
 		main.c \
 		parse/read_head.c \
@@ -46,18 +47,24 @@ _SRC =	board/board_free.c \
 		utils/check_strncmp.c \
 		utils/check_read_str.c \
 		utils/check_str_end.c \
+		utils/read_next_line.c \
 		parse/parse_board.c \
 		parse/parse_number.c \
 		parse/parse_number_n.c \
 		parse/parse_piece.c \
 		parse/read_head.c \
+		move/compute_move.c \
+		move/write_move.c
 
 .PHONY: all clean fclean re
 
-all: $(NAME)
+all: $(NAME) dumper
 
 $(NAME): $(OBJ)
-	$(CC) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
+
+dumper: $(SDIR)/dumper.c $(LIBFTDIR)/$(LIBFT)
+	$(CC) $(CFLAGS) $^ -o $@
 
 $(LIBFTDIR)/$(LIBFT):
 	make -C $(LIBFTDIR)
