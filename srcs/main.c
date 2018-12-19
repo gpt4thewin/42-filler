@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:41:57 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/18 20:00:16 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/19 11:44:23 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ int			main(int argc, char *argv[])
 	(void)argv;
 	ft_bzero(&piece, sizeof(piece));
 	read_head(&playerid, (char*)&playername);
-	parse_board(&board);
 	while (1)
 	{
+		parse_board(&board);
 		parse_piece(&piece);
 		board_print(&board);
+		board_print(&piece);
 	}
 	return (0);
 }

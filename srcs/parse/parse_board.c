@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 16:03:24 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/18 17:41:01 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/19 11:39:59 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static void	parse_line(t_board *board, int lineno)
 	while (i < board->width)
 	{
 		if (line[i + pos] == '.')
-			;
+			set_cell_at(board, i, lineno, 0);
 		else if (line[i + pos] == 'O')
 			set_cell_at(board, i, lineno, 1);
 		else if (line[i + pos] == 'X')
