@@ -12,7 +12,8 @@
 
 #include "filler.h"
 
-int	in_bounds(t_board *board, int x, int y)
+int	in_bounds(t_board *board, t_board *piece, int x, int y)
 {
-	return (x <= board->width & y <= board->height);
+	return (x + piece->width <= board->width &&
+			y + piece->height <= board->height);
 }

@@ -14,8 +14,8 @@
 
 void	write_move(t_point *move)
 {
-	ft_putnbr(move->x);
-	ft_putchar(' ');
 	ft_putnbr(move->y);
+	ft_putchar(' ');
+	ft_putnbr(move->x);
 	ft_putchar('\n');
 }

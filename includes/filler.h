@@ -77,7 +77,7 @@ void	board_free(t_board *board);
 // int		can_place(t_board *map, t_board *small, int x, int y);
 char	get_cell_at(t_board *board, int x, int y);
 void	set_cell_at(t_board *board, int x, int y, char val);
-int		in_bounds(t_board *board, int x, int y);
+int		in_bounds(t_board *board, t_board *piece, int x, int y);
 int		get_next_cell(t_board *board, t_point *point);
 void	read_next_line(char **line);
 

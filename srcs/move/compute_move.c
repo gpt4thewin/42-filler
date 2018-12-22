@@ -23,11 +23,15 @@ static int	can_place(t_board *board, t_board *piece, t_point *board_point, int p
 	piece_point.y = 0;
 	while (1)
 	{
+		if (!in_bounds(board, piece,
+						board_point->x + piece_point.x,
+						board_point->y + piece_point.y))
+				return (0);
 		if (get_cell_at(piece, piece_point.x, piece_point.y) == 1)
 		{
 			board_val = get_cell_at(board,
-						board_point->x + piece_point.x,
-						board_point->y + piece_point.y);
+									board_point->x + piece_point.x,
+									board_point->y + piece_point.y);
 			if (board_val != 0)
 			{
 				if (board_val == playerid)

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = clang
 
 CFLAGS = -Wall -Wextra -Werror -I $(IDIR) -I $(LIBFTIDIR) -g
 
@@ -33,8 +33,8 @@ SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
 _SRC =	board/board_free.c \
 		board/board_init.c \
 		board/can_place.c \
-		board/get_cell_at.c \
 		board/in_bounds.c \
+		board/get_cell_at.c \
 		board/set_cell_at.c \
 		board/board_print.c \
 		board/get_next_cell.c \
