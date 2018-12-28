@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   board_free.c                                       :+:      :+:    :+:   */
+/*   set_cell_at.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:05:00 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/18 17:59:36 by juazouz          ###   ########.fr       */
+/*   Created: 2018/12/17 15:20:25 by juazouz           #+#    #+#             */
+/*   Updated: 2018/12/28 15:55:00 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	board_free(t_board *board)
+void	set_cell_at(t_grid *board, int x, int y, char val)
 {
-	free(board->cells);
+	board->cells[x + y * board->width] = val;
 }

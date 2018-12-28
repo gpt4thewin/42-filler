@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   board_init.c                                       :+:      :+:    :+:   */
+/*   in_bounds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:03:28 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/17 15:04:34 by juazouz          ###   ########.fr       */
+/*   Created: 2018/12/17 15:22:18 by juazouz           #+#    #+#             */
+/*   Updated: 2018/12/28 15:55:00 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	board_init(t_board *board, int height, int width)
+int	in_bounds(t_grid *board, t_grid *piece, int x, int y)
 {
-	board->height = height;
-	board->width = width;
-	board->cells = malloc((height * width) * sizeof(*board->cells));
+	return (x + piece->width <= board->width &&
+			y + piece->height <= board->height);
 }

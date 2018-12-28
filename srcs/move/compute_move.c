@@ -6,13 +6,13 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 11:48:45 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 12:58:06 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 15:55:00 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static int	can_place(t_board *board, t_board *piece, t_point *board_point, int playerid)
+static int	can_place(t_grid *board, t_grid *piece, t_point *board_point, int playerid)
 {
 	int		overlaps;
 	t_point	piece_point;
@@ -48,7 +48,7 @@ static int	can_place(t_board *board, t_board *piece, t_point *board_point, int p
 	return (overlaps == 1);
 }
 
-int			compute_move(t_board *board, t_board *piece, t_point *point, int playerid)
+int			compute_move(t_grid *board, t_grid *piece, t_point *point, int playerid)
 {
 	point->x = 0;
 	point->y = 0;

@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 17:42:41 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 15:59:15 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@
 */
 
 typedef struct s_point	t_point;
-typedef struct s_board	t_board;
+typedef struct s_grid	t_grid;
 typedef struct s_piece	t_piece;
 
-struct	s_board
+struct	s_grid
 {
 	int		height;
 	int		width;
@@ -72,13 +72,13 @@ void	error(char *msg);
 **	Utils.
 */
 
-void	board_init(t_board *board, int height, int width);
-void	board_free(t_board *board);
-// int		can_place(t_board *map, t_board *small, int x, int y);
-char	get_cell_at(t_board *board, int x, int y);
-void	set_cell_at(t_board *board, int x, int y, char val);
-int		in_bounds(t_board *board, t_board *piece, int x, int y);
-int		get_next_cell(t_board *board, t_point *point);
+void	grid_init(t_grid *board, int height, int width);
+void	grid_free(t_grid *board);
+// int		can_place(t_grid *map, t_grid *small, int x, int y);
+char	get_cell_at(t_grid *board, int x, int y);
+void	set_cell_at(t_grid *board, int x, int y, char val);
+int		in_bounds(t_grid *board, t_grid *piece, int x, int y);
+int		get_next_cell(t_grid *board, t_point *point);
 void	read_next_line(char **line);
 
 /*
@@ -103,8 +103,8 @@ void	piece_init(t_piece *piece, int height, int width);
 */
 
 void	read_head(int *id, char *name);
-void	parse_board(t_board *board);
-void	parse_piece(t_board *board);
+void	parse_board(t_grid *board);
+void	parse_piece(t_grid *board);
 
 /*
 **	Assert.
@@ -118,13 +118,13 @@ void	check_is_true(int val, char *msg);
 **	Debug.
 */
 
-void	board_print(t_board *board);
+void	grid_print(t_grid *board);
 
 /*
 **	Move.
 */
 
-int		compute_move(t_board *board, t_board *piece, t_point *point, int playerid);
+int		compute_move(t_grid *board, t_grid *piece, t_point *point, int playerid);
 void	write_move(t_point *move);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:05:54 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 12:07:53 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 15:55:00 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-// static int	next_cell(t_board *board, int *x, int *y)
+// static int	next_cell(t_grid *board, int *x, int *y)
 // {
 // 	(*x)++;
 
@@ -26,7 +26,7 @@
 // 	return (1);
 // }
 
-// int			can_place(t_board *map, t_board *small, int x, int y)
+// int			can_place(t_grid *map, t_grid *small, int x, int y)
 // {
 // 	int	overlap;
 // 	int	small_x;

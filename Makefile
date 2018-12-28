@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2018/12/19 17:40:17 by juazouz          ###   ########.fr        #
+#    Updated: 2018/12/28 16:00:00 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,14 +30,14 @@ OBJ = $(patsubst %.c,$(ODIR)/%.o,$(_SRC)) \
 
 SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
 
-_SRC =	board/board_free.c \
-		board/board_init.c \
-		board/can_place.c \
-		board/in_bounds.c \
-		board/get_cell_at.c \
-		board/set_cell_at.c \
-		board/board_print.c \
-		board/get_next_cell.c \
+_SRC =	grid/grid_free.c \
+		grid/grid_init.c \
+		grid/can_place.c \
+		grid/in_bounds.c \
+		grid/get_cell_at.c \
+		grid/set_cell_at.c \
+		grid/grid_print.c \
+		grid/get_next_cell.c \
 		error.c \
 		main.c \
 		parse/read_head.c \

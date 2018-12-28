@@ -6,13 +6,13 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 17:45:04 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 17:39:54 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 15:59:15 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static void	parse_head(t_board *board)
+static void	parse_head(t_grid *board)
 {
 	int		height;
 	int		width;
@@ -21,10 +21,10 @@ static void	parse_head(t_board *board)
 	height = read_number(' ');
 	width = read_number(':');
 	expect_input_lineend();
-	board_init(board, height, width);
+	grid_init(board, height, width);
 }
 
-static void	parse_line(t_board *board, int lineno)
+static void	parse_line(t_grid *board, int lineno)
 {
 	int		i;
 	char	c;
@@ -44,7 +44,7 @@ static void	parse_line(t_board *board, int lineno)
 	expect_input_lineend();
 }
 
-void		parse_piece(t_board *board)
+void		parse_piece(t_grid *board)
 {
 	int	i;
 

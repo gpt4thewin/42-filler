@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 16:03:24 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 17:33:35 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 15:59:15 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 **	Parses the first line.
 */
 
-static void	parse_head(t_board *board)
+static void	parse_head(t_grid *board)
 {
 	int		width;
 	int		height;
@@ -49,14 +49,14 @@ static void	parse_head(t_board *board)
 	width = read_number(' ');
 	height = read_number(':');
 	expect_input_lineend();
-	board_init(board, width, height);
+	grid_init(board, width, height);
 }
 
 /*
 **	Parses the second line.
 */
 
-static void	parse_board_head(t_board *board)
+static void	parse_grid_head(t_grid *board)
 {
 	int		i;
 
@@ -75,7 +75,7 @@ static void	parse_board_head(t_board *board)
 **	and fills the board information.
 */
 
-static void	parse_line(t_board *board, int lineno)
+static void	parse_line(t_grid *board, int lineno)
 {
 	int		input_lineno;
 	int		i;
@@ -101,12 +101,12 @@ static void	parse_line(t_board *board, int lineno)
 	expect_input_lineend();
 }
 
-void		parse_board(t_board *board)
+void		parse_board(t_grid *board)
 {
 	int		i;
 
 	parse_head(board);
-	parse_board_head(board);
+	parse_grid_head(board);
 	i = 0;
 	while (i < board->height)
 	{

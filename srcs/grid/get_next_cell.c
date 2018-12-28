@@ -1,47 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   board_print.c                                      :+:      :+:    :+:   */
+/*   get_next_cell.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 19:59:31 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/18 17:28:25 by juazouz          ###   ########.fr       */
+/*   Created: 2018/12/19 11:55:02 by juazouz           #+#    #+#             */
+/*   Updated: 2018/12/28 15:55:00 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static void	print_line(t_board *board, int line)
+/*
+**	Moves the point to the next cell.
+**	Returns 0 when the end of the grid is reached.
+*/
+
+int	get_next_cell(t_grid *grid, t_point *point)
 {
-	int		i;
-	char	c;
-
-	i = 0;
-	while (i < board->width)
+	point->x++;
+	if (point->x >= grid->width)
 	{
-		c = get_cell_at(board, i, line);
-		if (c == 0)
-			ft_putchar('.');
-		else if (c == 1)
-			ft_putchar('O');
-		else if (c == 2)
-			ft_putchar('X');
-		else
-			ft_putchar('?');
-		i++;
+		point->x = 0;
+		point->y++;
+		if (point->y >= grid->height)
+		{
+			return (0);
+		}
 	}
-	ft_putchar('\n');
-}
-
-void		board_print(t_board *board)
-{
-	int	i;
-
-	i = 0;
-	while (i < board->height)
-	{
-		print_line(board, i);
-		i++;
-	}
+	return (1);
 }
