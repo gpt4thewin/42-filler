@@ -6,41 +6,45 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:05:54 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 15:55:00 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 16:20:00 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-// static int	next_cell(t_grid *board, int *x, int *y)
-// {
-// 	(*x)++;
+/*
+**	Returns one if the specified piece can be placed at the specified
+**	point "target" on the specified board.
+*/
 
-// 	if (*x > board->width)
-// 	{
-// 		(*y)++;
-// 		(*x) = 0;
-// 	}
-// 	if (*y > board->height)
-// 		return (0);
-// 	return (1);
-// }
+int	can_place(t_grid *board, t_grid *piece, t_point *target, int playerid)
+{
+	int		overlaps;
+	t_point	piece_point;
+	char	board_val;
 
-// int			can_place(t_grid *map, t_grid *small, int x, int y)
-// {
-// 	int	overlap;
-// 	int	small_x;
-// 	int	small_y;
-
-// 	if (!in_bounds(map, x, y))
-// 		return (0);
-// 	overlap = 0;
-// 	small_x = 0;
-// 	small_y = 0;
-// 	while (next_cell(small, &small_x, &small_y))
-// 	{
-// 		if (!in_bounds(map, small_x + x, small_y + y))
-// 			continue;
-// 	}
-// 	return (0);
-// }
+	overlaps = 0;
+	piece_point.x = 0;
+	piece_point.y = 0;
+	while (1)
+	{
+		if (!in_bounds(board, piece, point_add(*target, piece_point)))
+			return (0);
+		if (get_cell_at(piece, piece_point) == 1)
+		{
+			board_val = get_cell_at(board, point_add(*target, piece_point));
+			if (board_val != 0)
+			{
+				if (board_val == playerid)
+					overlaps++;
+				else
+					return (0);
+			}
+			if (overlaps > 1)
+				return (0);
+		}
+		if (!get_next_cell(piece, &piece_point))
+			break ;
+	}
+	return (overlaps == 1);
+}
