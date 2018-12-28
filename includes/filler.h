@@ -87,7 +87,7 @@ void	grid_free(t_grid *board);
 int		can_place(t_grid *board, t_grid *piece, t_point *target, int playerid);
 char	get_cell_at(t_grid *grid, t_point point);
 void	set_cell_at(t_grid *grid, t_point point, char val);
-int		in_bounds(t_grid *board, t_grid *piece, t_point point);
+int		piece_in_bounds(t_grid *board, t_grid *piece, t_point point);
 int		get_next_cell(t_grid *board, t_point *point);
 void	read_next_line(char **line);
 t_point	point_add(t_point a, t_point b);

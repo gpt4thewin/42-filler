@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2018/12/28 16:05:05 by juazouz          ###   ########.fr        #
+#    Updated: 2018/12/28 18:02:56 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
 _SRC =	grid/grid_free.c \
 		grid/grid_init.c \
 		grid/can_place.c \
-		grid/in_bounds.c \
+		grid/piece_in_bounds.c \
 		grid/get_cell_at.c \
 		grid/set_cell_at.c \
 		grid/grid_print.c \

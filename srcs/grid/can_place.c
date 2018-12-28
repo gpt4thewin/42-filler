@@ -28,7 +28,7 @@ int	can_place(t_grid *board, t_grid *piece, t_point *target, int playerid)
 	piece_point.y = 0;
 	while (1)
 	{
-		if (!in_bounds(board, piece, point_add(*target, piece_point)))
+		if (!piece_in_bounds(board, piece, point_add(*target, piece_point)))
 			return (0);
 		if (get_cell_at(piece, piece_point) == 1)
 		{
