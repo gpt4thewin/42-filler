@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 16:18:44 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 16:50:41 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 typedef struct s_point	t_point;
 typedef struct s_grid	t_grid;
 typedef struct s_piece	t_piece;
+typedef struct s_gamestate	t_gamestate;
 
 struct	s_grid
 {
@@ -60,6 +61,15 @@ struct s_point
 {
 	int		x;
 	int		y;
+};
+
+struct	s_gamestate
+{
+	int		playerid;
+	char	playername[MAX_PLAYER_NAME_LEN];
+	t_grid	board;
+	t_grid	piece;
+	t_grid	priority_map;
 };
 
 /*
@@ -125,7 +135,7 @@ void	grid_print(t_grid *board);
 **	Move.
 */
 
-int		compute_move(t_grid *board, t_grid *piece, t_point *point, int playerid);
+int		compute_move(t_gamestate *gamestate, t_point *point);
 void	write_move(t_point *move);
 
 #endif
