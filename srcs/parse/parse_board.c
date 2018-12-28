@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 16:03:24 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 15:59:15 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 17:10:44 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,23 @@ static void	parse_line(t_grid *board, int lineno)
 	int		input_lineno;
 	int		i;
 	char	c;
+	t_point	point;
 
 	input_lineno = read_number_n(3);
 	check_eq(input_lineno, lineno, MSG_PARSE_ERROR);
 	expect_input_str(" ");
+	point.y = lineno;
 	i = 0;
 	while (i < board->width)
 	{
 		c = read_char();
+		point.x = i;
 		if (c == '.')
-			set_cell_at(board, i, lineno, 0);
+			set_cell_at(board, point, 0);
 		else if (c == 'O' || c == 'o')
-			set_cell_at(board, i, lineno, 1);
+			set_cell_at(board, point, 1);
 		else if (c == 'X' || c == 'x')
-			set_cell_at(board, i, lineno, 2);
+			set_cell_at(board, point, 2);
 		else
 			error(MSG_PARSE_ERROR);
 		i++;
