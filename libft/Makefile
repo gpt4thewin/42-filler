@@ -6,24 +6,27 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2018/12/17 18:34:52 by juazouz          ###   ########.fr        #
+#    Updated: 2018/12/28 15:42:39 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
+CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I $(IDIR)
+CFLAGS = -Wall -Wextra -Werror -I $(IDIR) -g
 
 NAME = libft.a
 
-DEPS = $(IDIR)/libft.h
+DEPS =	$(IDIR)/libft.h \
+		$(IDIR)/ft_printf.h \
+		$(IDIR)/ft_printf_types.h
 
 SDIR = srcs
 IDIR = includes
 ODIR = obj
 
-OBJ = $(patsubst %.c,$(ODIR)/%.o,$(_SRC))
-SRC = $(prefix $(SDIR),$(_SRC))
+OBJ = $(patsubst %.c,$(ODIR)/%.o,$(SRC))
+SRC =	$(_SRC) \
+		$(addprefix output/ft_printf/,$(_SRC_FTFPRINTF))
 
 _SRC =	./char/ft_isalnum.c \
 		./char/ft_isalpha.c \
@@ -91,7 +94,40 @@ _SRC =	./char/ft_isalnum.c \
 		./string/ft_strstr.c \
 		./string/ft_strsub.c \
 		./string/ft_strtrim.c \
-		./input/get_next_line.c
+		./input/get_next_line.c \
+		./math/ft_powf.c
+
+_SRC_FTFPRINTF = \
+				./core/ft_fprintf.c \
+				./core/print_argument.c \
+				./parse/parse.c \
+				./parse/parse_flags.c \
+				./parse/parse_length.c \
+				./parse/parse_number.c \
+				./parse/parse_precision.c \
+				./parse/parse_specifier.c \
+				./parse/parse_width.c \
+				./types/print_char.c \
+				./types/print_float.c \
+				./types/print_hex.c \
+				./types/print_hexup.c \
+				./types/print_int.c \
+				./types/print_octal.c \
+				./types/print_str.c \
+				./types/print_uint.c \
+				./types/print_percent.c \
+				./types/print_ptr.c \
+				./utils/ft_putnbr_base.c \
+				./utils/ft_putnstr.c \
+				./utils/print_number_generic.c \
+				./utils/print_padding.c \
+				./utils/print_prepound_notnull.c \
+				./utils/value_is_zero.c \
+				./output/out_init.c \
+				./output/out_putchar_len.c \
+				./output/out_putchar.c \
+				./output/out_fill.c \
+				./args/read_argument.c
 
 all: $(NAME)
 

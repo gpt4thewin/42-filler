@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:47:56 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 14:15:22 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/17 18:35:06 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <limits.h>
 #include "libft.h"
 
-#define BUFF_SIZE 1
+#define BUFF_SIZE 128
 
 static unsigned int	linelen(char *str)
 {
