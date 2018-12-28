@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 15:59:15 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 16:09:12 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,12 @@ void	error(char *msg);
 void	grid_init(t_grid *board, int height, int width);
 void	grid_free(t_grid *board);
 // int		can_place(t_grid *map, t_grid *small, int x, int y);
-char	get_cell_at(t_grid *board, int x, int y);
+char	get_cell_at(t_grid *grid, t_point point);
 void	set_cell_at(t_grid *board, int x, int y, char val);
-int		in_bounds(t_grid *board, t_grid *piece, int x, int y);
+int		in_bounds(t_grid *board, t_grid *piece, t_point point);
 int		get_next_cell(t_grid *board, t_point *point);
 void	read_next_line(char **line);
+t_point	point_add(t_point a, t_point b);
 
 /*
 **	Input.

@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cell_at.c                                      :+:      :+:    :+:   */
+/*   point_add.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 15:20:25 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 16:06:44 by juazouz          ###   ########.fr       */
+/*   Created: 2018/12/28 16:03:55 by juazouz           #+#    #+#             */
+/*   Updated: 2018/12/28 16:07:17 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-char	get_cell_at(t_grid *grid, t_point point)
+t_point	point_add(t_point a, t_point b)
 {
-	return (grid->cells[point.x + point.y * grid->width]);
+	t_point	res;
+
+	res.x = a.x + b.x;
+	res.y = a.y + b.y;
+	return (res);
 }
