@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 16:03:24 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 17:10:44 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 18:15:23 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,22 @@ static void	parse_grid_head(t_grid *board)
 	expect_input_lineend();
 }
 
+static void	parse_line_char(t_grid *board, t_point point, char c)
+{
+	if (c == '.')
+		set_cell_at(board, point, CELL_EMPTY);
+	else if (c == 'O')
+		set_cell_at(board, point, CELL_P1);
+	else if (c == 'o')
+		set_cell_at(board, point, CELL_P1_NEW);
+	else if (c == 'X')
+		set_cell_at(board, point, CELL_P2);
+	else if (c == 'x')
+		set_cell_at(board, point, CELL_P2_NEW);
+	else
+		error(MSG_PARSE_ERROR);
+}
+
 /*
 **	Parses the remaining content lines of the board
 **	and fills the board information.
@@ -91,14 +107,7 @@ static void	parse_line(t_grid *board, int lineno)
 	{
 		c = read_char();
 		point.x = i;
-		if (c == '.')
-			set_cell_at(board, point, 0);
-		else if (c == 'O' || c == 'o')
-			set_cell_at(board, point, 1);
-		else if (c == 'X' || c == 'x')
-			set_cell_at(board, point, 2);
-		else
-			error(MSG_PARSE_ERROR);
+		parse_line_char(board, point, c);
 		i++;
 	}
 	expect_input_lineend();

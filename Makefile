@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2018/12/28 18:02:56 by juazouz          ###   ########.fr        #
+#    Updated: 2018/12/28 18:29:51 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ _SRC =	grid/grid_free.c \
 		utils/check_str_end.c \
 		utils/read_next_line.c \
 		utils/point_add.c \
+		utils/player_has_cell.c \
 		parse/parse_board.c \
 		parse/parse_number.c \
 		parse/parse_number_n.c \

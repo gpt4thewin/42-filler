@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:05:54 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 16:20:00 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 18:27:16 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	can_place(t_grid *board, t_grid *piece, t_point *target, int playerid)
 		if (get_cell_at(piece, piece_point) == 1)
 		{
 			board_val = get_cell_at(board, point_add(*target, piece_point));
-			if (board_val != 0)
+			if (board_val != CELL_EMPTY)
 			{
-				if (board_val == playerid)
+				if (player_has_cell(board_val, playerid))
 					overlaps++;
 				else
 					return (0);

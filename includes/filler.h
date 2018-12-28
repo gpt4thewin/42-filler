@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 17:08:13 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 18:26:50 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@
 # define MSG_PARSE_ERROR_HEAD "Parse error (Invalid head)"
 # define MSG_PARSE_ERROR "Parse error"
 // # define MSG_PARSE_ASSERT_ERROR "Parse assert error"
+
+/*
+**	Defines : board information.
+*/
+
+# define CELL_EMPTY 0
+# define CELL_P1 1
+# define CELL_P2 3
+# define CELL_P1_NEW 2
+# define CELL_P2_NEW 4
 
 /*
 **	Types.
@@ -91,6 +101,7 @@ int		piece_in_bounds(t_grid *board, t_grid *piece, t_point point);
 int		get_next_cell(t_grid *board, t_point *point);
 void	read_next_line(char **line);
 t_point	point_add(t_point a, t_point b);
+int		player_has_cell(char cell, int playerid);
 
 /*
 **	Input.
