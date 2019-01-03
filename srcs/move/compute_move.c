@@ -6,22 +6,93 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 11:48:45 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 16:47:10 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 14:58:47 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int			compute_move(t_gamestate *gamestate, t_point *point)
+/*
+**	Returns the sum of the distance to the nearest enemy
+**	for every point of the piece.
+*/
+
+static int		get_nearest_enemy_dist(t_gamestate *gamestate, t_list *elem)
 {
-	point->x = 0;
-	point->y = 0;
-	while (1)
+	t_point	piece_point_origin;
+	t_point	piece_point;
+	t_point	enemy_point;
+	int		dist_sum;
+
+	piece_point_origin = *((t_point*)elem->content);
+	dist_sum = 0;
+	point_init(&piece_point);
+	while (get_next_cell(&gamestate->piece, &piece_point))
 	{
-		if (can_place(&gamestate->board, &gamestate->piece, point, gamestate->playerid))
-			return (1);
-		if (!get_next_cell(&gamestate->board, point))
-			break ;
+		if (get_cell_at(&gamestate->piece, piece_point) != 1)
+			continue ;
+		get_nearest_enemy(gamestate,
+							point_add(piece_point_origin, piece_point),
+							&enemy_point);
+		dist_sum += point_dist(point_add(piece_point_origin, piece_point),
+								enemy_point);
 	}
-	return (0);
+	return (dist_sum);
+}
+
+/*
+**	Creates a list of all possible moves.
+*/
+
+static void		create_moves_list(t_gamestate *gamestate, t_list **list)
+{
+	t_list	*new;
+	t_point	point;
+
+	point_init(&point);
+	while (get_next_cell(&gamestate->board, &point))
+	{
+		if (can_place(&gamestate->board, &gamestate->piece, &point, gamestate->playerid))
+		{
+			new = ft_lstnew(&point, sizeof(point));
+			ft_lstadd(list, new);
+		}
+	}
+}
+
+static t_list	*lst_get_minby(t_list *lst, int (*f)(t_gamestate *gamestate, t_list *elem), t_gamestate *gamestate)
+{
+	t_list	*curr;
+	t_list	*res;
+	int		res_int;
+	int		tmp;
+
+	curr = lst;
+	res_int = -1;
+	res = NULL;
+	while (curr != NULL)
+	{
+		tmp = f(gamestate, curr);
+		if (res_int == -1 || tmp < res_int)
+		{
+			res = curr;
+			res_int = tmp;
+		}
+		curr = curr->next;
+	}
+	return (res);
+}
+
+int				compute_move(t_gamestate *gamestate, t_point *point)
+{
+	t_list	*moves;
+
+	moves = NULL;
+	create_moves_list(gamestate, &moves);
+	if (moves == NULL)
+		return (0);
+	*point = *(t_point*)lst_get_minby(moves, get_nearest_enemy_dist, gamestate)->content;
+	ft_lstdel(&moves, NULL);
+
+	return (1);
 }

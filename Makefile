@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2018/12/28 18:29:51 by juazouz          ###   ########.fr        #
+#    Updated: 2019/01/03 14:31:43 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,13 +48,17 @@ _SRC =	grid/grid_free.c \
 		utils/check_str_end.c \
 		utils/read_next_line.c \
 		utils/point_add.c \
+		utils/point_dist.c \
+		utils/point_init.c \
 		utils/player_has_cell.c \
+		utils/player_is_enemy.c \
 		parse/parse_board.c \
 		parse/parse_number.c \
 		parse/parse_number_n.c \
 		parse/parse_piece.c \
 		parse/read_head.c \
 		move/compute_move.c \
+		move/get_nearest_enemy.c \
 		move/write_move.c \
 		input/expect_input_char.c \
 		input/expect_input_lineend.c \

@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 18:26:50 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 14:31:30 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,14 @@ struct	s_piece
 
 struct s_point
 {
+	t_bool	iteration_started;
 	int		x;
 	int		y;
 };
 
 struct	s_gamestate
 {
+	int		round;
 	int		playerid;
 	char	playername[MAX_PLAYER_NAME_LEN];
 	t_grid	board;
@@ -101,7 +103,10 @@ int		piece_in_bounds(t_grid *board, t_grid *piece, t_point point);
 int		get_next_cell(t_grid *board, t_point *point);
 void	read_next_line(char **line);
 t_point	point_add(t_point a, t_point b);
+int		point_dist(t_point a, t_point b);
+void	point_init(t_point *point);
 int		player_has_cell(char cell, int playerid);
+int		player_is_enemy(int playerid, int other);
 
 /*
 **	Input.
@@ -148,5 +153,6 @@ void	grid_print(t_grid *board);
 
 int		compute_move(t_gamestate *gamestate, t_point *point);
 void	write_move(t_point *move);
+int		get_nearest_enemy(t_gamestate *gamestate, t_point start, t_point *found);
 
 #endif

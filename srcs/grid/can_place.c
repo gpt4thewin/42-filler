@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:05:54 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 18:27:16 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 14:40:22 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ int	can_place(t_grid *board, t_grid *piece, t_point *target, int playerid)
 	char	board_val;
 
 	overlaps = 0;
-	piece_point.x = 0;
-	piece_point.y = 0;
-	while (1)
+	point_init(&piece_point);
+	if (!piece_in_bounds(board, piece, point_add(*target, piece_point)))
+		return (0);
+	while (get_next_cell(piece, &piece_point))
 	{
-		if (!piece_in_bounds(board, piece, point_add(*target, piece_point)))
-			return (0);
 		if (get_cell_at(piece, piece_point) == 1)
 		{
 			board_val = get_cell_at(board, point_add(*target, piece_point));
@@ -43,8 +42,6 @@ int	can_place(t_grid *board, t_grid *piece, t_point *target, int playerid)
 			if (overlaps > 1)
 				return (0);
 		}
-		if (!get_next_cell(piece, &piece_point))
-			break ;
 	}
 	return (overlaps == 1);
 }
