@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 18:41:43 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 18:58:53 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@
 **	Defines : player stages.
 */
 
-# define STAGE_INITIAL 0
-# define STAGE_CONTACT 1
-# define STAGE_EZPZ 2
+# define MODE_INITIAL 0
+# define MODE_CONTACT 1
+# define MODE_EZPZ 2
 
 /*
 **	Types.
@@ -84,7 +84,7 @@ struct	s_point
 
 struct	s_state
 {
-	int		stage;
+	int		mode;
 	int		playerid;
 	char	playername[MAX_PLAYER_NAME_LEN];
 	t_grid	board;

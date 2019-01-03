@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 11:48:45 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 18:41:25 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 18:58:56 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void		create_moves_list(t_state *state, t_list **list)
 		{
 			new = ft_lstnew(&point, sizeof(point));
 			ft_lstadd(list, new);
-			if (state->stage == STAGE_EZPZ)
+			if (state->mode == MODE_EZPZ)
 				return ;
 		}
 	}
@@ -92,18 +92,18 @@ static void		update_stage(t_state *state, t_point *point)
 
 	move.content = point;
 	enemy_dist = nearest_enemy_dist(state, &move);
-	if (state->stage == STAGE_INITIAL || state->stage == STAGE_EZPZ)
+	if (state->mode == MODE_INITIAL || state->mode == MODE_EZPZ)
 	{
 		if (enemy_dist <= 1)
 		{
-			state->stage = STAGE_CONTACT;
+			state->mode = MODE_CONTACT;
 		}
 	}
-	else if (state->stage == STAGE_CONTACT)
+	else if (state->mode == MODE_CONTACT)
 	{
 		if (enemy_dist > 7)
 		{
-			state->stage = STAGE_EZPZ;
+			state->mode = MODE_EZPZ;
 		}
 	}
 }
@@ -116,7 +116,7 @@ int				compute_move(t_state *state, t_point *point)
 	create_moves_list(state, &moves);
 	if (moves == NULL)
 		return (0);
-	if (state->stage == STAGE_EZPZ)
+	if (state->mode == MODE_EZPZ)
 	{
 		*point = *(t_point*)moves->content;
 	}
