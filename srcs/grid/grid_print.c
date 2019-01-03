@@ -6,11 +6,12 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 19:59:31 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 19:53:16 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 15:04:58 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+#define TARGET_FD STDERR_FILENO
 
 static void	print_line(t_grid *grid, int line)
 {
@@ -25,16 +26,16 @@ static void	print_line(t_grid *grid, int line)
 		point.x = i;
 		c = get_cell_at(grid, point);
 		if (c == CELL_EMPTY)
-			ft_putchar('.');
+			ft_putchar_fd('.', TARGET_FD);
 		else if (c == CELL_P1 || c == CELL_P1_NEW)
-			ft_putchar('O');
+			ft_putchar_fd('O', TARGET_FD);
 		else if (c == CELL_P2 || c == CELL_P2_NEW)
-			ft_putchar('X');
+			ft_putchar_fd('X', TARGET_FD);
 		else
-			ft_putchar('?');
+			ft_putchar_fd('?', TARGET_FD);
 		i++;
 	}
-	ft_putchar('\n');
+	ft_putchar_fd('\n', TARGET_FD);
 }
 
 void		grid_print(t_grid *grid)
