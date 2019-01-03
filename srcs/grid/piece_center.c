@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 16:41:23 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 17:16:33 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 18:40:48 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ t_point	piece_center(t_grid *piece)
 	}
 	res.x /= n;
 	res.y /= n;
-
 	return (res);
 }

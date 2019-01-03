@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 16:58:08 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 18:38:14 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 18:40:41 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,5 @@ char	read_char(void)
 		if (state < 0)
 			error(MSG_READ_ERROR);
 	}
-	// ft_putnbr_fd(state, STDERR_FILENO);
-	// ft_putendl_fd("", STDERR_FILENO);
 	return (c);
 }

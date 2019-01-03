@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 17:53:01 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 18:41:43 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # define MSG_READ_ERROR "Read error"
 # define MSG_PARSE_ERROR_HEAD "Parse error (Invalid head)"
 # define MSG_PARSE_ERROR "Parse error"
-// # define MSG_PARSE_ASSERT_ERROR "Parse assert error"
 
 /*
 **	Defines : board information.
@@ -59,7 +58,7 @@ typedef struct s_point	t_point;
 typedef struct s_fpoint	t_fpoint;
 typedef struct s_grid	t_grid;
 typedef struct s_piece	t_piece;
-typedef struct s_gamestate	t_gamestate;
+typedef struct s_state	t_state;
 
 struct	s_grid
 {
@@ -76,14 +75,14 @@ struct	s_piece
 	char	*cells;
 };
 
-struct s_point
+struct	s_point
 {
 	t_bool	iteration_started;
 	int		x;
 	int		y;
 };
 
-struct	s_gamestate
+struct	s_state
 {
 	int		stage;
 	int		playerid;
@@ -125,7 +124,7 @@ int		player_is_enemy(int playerid, int other);
 char	read_char();
 void	expect_input_char(char expected);
 void	expect_input_str(char *str);
-void	expect_input_lineend();
+void	expect_input_lineend(void);
 int		read_number_n(int n);
 int		read_number(char endchar);
 
@@ -161,8 +160,8 @@ void	grid_print(t_grid *board);
 **	Move.
 */
 
-int		compute_move(t_gamestate *gamestate, t_point *point);
+int		compute_move(t_state *state, t_point *point);
 void	write_move(t_point *move);
-int		get_nearest_enemy(t_gamestate *gamestate, t_point start, t_point *found);
+int		get_nearest_enemy(t_state *state, t_point start, t_point *found);
 
 #endif
