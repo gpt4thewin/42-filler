@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:41:57 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 15:04:05 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 15:57:29 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int			main(int argc, char *argv[])
 {
 	t_gamestate	gamestate;
 	t_point		move;
-	// int		stop = 1;
 
 	(void)argc;
 	(void)argv;
@@ -26,18 +25,15 @@ int			main(int argc, char *argv[])
 	{
 		parse_board(&gamestate.board);
 		parse_piece(&gamestate.piece);
-		// grid_print(&gamestate.board);
-		// grid_print(&gamestate.piece);
 		if (!compute_move(&gamestate, &move))
 		{
-			ft_putendl_fd("Game over", STDERR_FILENO);
-			grid_print(&gamestate.piece);
-			break ;
+			move.x = 0;
+			move.y = 0;
+		write_move(&move);
+			return (0);
 		}
 		write_move(&move);
 		gamestate.round++;
-		// while (stop)
-		// 	;
 	}
 	return (0);
 }
