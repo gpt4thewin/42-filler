@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 23:18:06 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 15:42:46 by juazouz          ###   ########.fr       */
+/*   Updated: 2018/12/28 18:49:09 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,6 @@ int				ft_max(int *ptr, int size);
 */
 
 double			ft_powf(double num, int e);
+int				ft_abs(int val);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2018/12/28 15:42:39 by juazouz          ###   ########.fr        #
+#    Updated: 2018/12/28 18:49:22 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,8 @@ _SRC =	./char/ft_isalnum.c \
 		./string/ft_strsub.c \
 		./string/ft_strtrim.c \
 		./input/get_next_line.c \
-		./math/ft_powf.c
+		./math/ft_powf.c \
+		./math/ft_abs.c
 
 _SRC_FTFPRINTF = \
 				./core/ft_fprintf.c \
