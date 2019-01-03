@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 14:31:30 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 17:30:36 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 */
 
 typedef struct s_point	t_point;
+typedef struct s_fpoint	t_fpoint;
 typedef struct s_grid	t_grid;
 typedef struct s_piece	t_piece;
 typedef struct s_gamestate	t_gamestate;
@@ -105,6 +106,7 @@ void	read_next_line(char **line);
 t_point	point_add(t_point a, t_point b);
 int		point_dist(t_point a, t_point b);
 void	point_init(t_point *point);
+t_point	piece_center(t_grid *piece);
 int		player_has_cell(char cell, int playerid);
 int		player_is_enemy(int playerid, int other);
 

@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2019/01/03 14:31:43 by juazouz          ###   ########.fr        #
+#    Updated: 2019/01/03 16:48:28 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ _SRC =	grid/grid_free.c \
 		grid/set_cell_at.c \
 		grid/grid_print.c \
 		grid/get_next_cell.c \
+		grid/piece_center.c \
 		error.c \
 		main.c \
 		parse/read_head.c \

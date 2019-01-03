@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 11:48:45 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 14:58:47 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 16:58:56 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,12 @@ static int		get_nearest_enemy_dist(t_gamestate *gamestate, t_list *elem)
 	piece_point_origin = *((t_point*)elem->content);
 	dist_sum = 0;
 	point_init(&piece_point);
-	while (get_next_cell(&gamestate->piece, &piece_point))
-	{
-		if (get_cell_at(&gamestate->piece, piece_point) != 1)
-			continue ;
-		get_nearest_enemy(gamestate,
-							point_add(piece_point_origin, piece_point),
-							&enemy_point);
-		dist_sum += point_dist(point_add(piece_point_origin, piece_point),
-								enemy_point);
-	}
+	piece_point = piece_center(&gamestate->piece);
+	get_nearest_enemy(gamestate,
+						point_add(piece_point_origin, piece_point),
+						&enemy_point);
+	dist_sum += point_dist(point_add(piece_point_origin, piece_point),
+							enemy_point);
 	return (dist_sum);
 }
 

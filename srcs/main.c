@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:41:57 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 15:57:29 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 17:02:50 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			main(int argc, char *argv[])
 		{
 			move.x = 0;
 			move.y = 0;
-		write_move(&move);
+			write_move(&move);
 			return (0);
 		}
 		write_move(&move);
