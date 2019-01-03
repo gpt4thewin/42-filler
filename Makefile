@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2019/01/03 16:48:28 by juazouz          ###   ########.fr        #
+#    Updated: 2019/01/03 18:51:11 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,20 +33,16 @@ SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
 _SRC =	grid/grid_free.c \
 		grid/grid_init.c \
 		grid/can_place.c \
-		grid/piece_in_bounds.c \
 		grid/get_cell_at.c \
 		grid/set_cell_at.c \
 		grid/grid_print.c \
 		grid/get_next_cell.c \
-		grid/piece_center.c \
+		piece/piece_center.c \
+		piece/piece_in_bounds.c \
 		error.c \
 		main.c \
 		parse/read_head.c \
 		utils/check_eq.c \
-		utils/check_is_true.c \
-		utils/check_strncmp.c \
-		utils/check_read_str.c \
-		utils/check_str_end.c \
 		utils/read_next_line.c \
 		utils/point_add.c \
 		utils/point_dist.c \
@@ -70,12 +66,9 @@ _SRC =	grid/grid_free.c \
 
 .PHONY: all clean fclean re
 
-all: $(NAME) dumper
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@
-
-dumper: $(SDIR)/dumper.c $(LIBFTDIR)/$(LIBFT)
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(LIBFTDIR)/$(LIBFT):
