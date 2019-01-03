@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 17:30:36 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 17:53:01 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@
 # define CELL_P2_NEW 4
 
 /*
+**	Defines : player stages.
+*/
+
+# define STAGE_INITIAL 0
+# define STAGE_CONTACT 1
+# define STAGE_EZPZ 2
+
+/*
 **	Types.
 */
 
@@ -77,7 +85,7 @@ struct s_point
 
 struct	s_gamestate
 {
-	int		round;
+	int		stage;
 	int		playerid;
 	char	playername[MAX_PLAYER_NAME_LEN];
 	t_grid	board;

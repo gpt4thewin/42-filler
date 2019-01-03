@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:41:57 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 17:02:50 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 18:10:24 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int			main(int argc, char *argv[])
 			return (0);
 		}
 		write_move(&move);
-		gamestate.round++;
 	}
 	return (0);
 }

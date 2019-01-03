@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 11:48:45 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 16:58:56 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/03 18:09:26 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static void		create_moves_list(t_gamestate *gamestate, t_list **list)
 		{
 			new = ft_lstnew(&point, sizeof(point));
 			ft_lstadd(list, new);
+			if (gamestate->stage == STAGE_EZPZ)
+				return ;
 		}
 	}
 }
@@ -79,6 +81,29 @@ static t_list	*lst_get_minby(t_list *lst, int (*f)(t_gamestate *gamestate, t_lis
 	return (res);
 }
 
+static void		update_stage(t_gamestate *gamestate, t_point *point)
+{
+	t_list	move;
+	int		enemy_dist;
+
+	move.content = point;
+	enemy_dist = get_nearest_enemy_dist(gamestate, &move);
+	if (gamestate->stage == STAGE_INITIAL || gamestate->stage == STAGE_EZPZ)
+	{
+		if (enemy_dist <= 1)
+		{
+			gamestate->stage = STAGE_CONTACT;
+		}
+	}
+	else if (gamestate->stage == STAGE_CONTACT)
+	{
+		if (enemy_dist > 7)
+		{
+			gamestate->stage = STAGE_EZPZ;
+		}
+	}
+}
+
 int				compute_move(t_gamestate *gamestate, t_point *point)
 {
 	t_list	*moves;
@@ -87,7 +112,15 @@ int				compute_move(t_gamestate *gamestate, t_point *point)
 	create_moves_list(gamestate, &moves);
 	if (moves == NULL)
 		return (0);
-	*point = *(t_point*)lst_get_minby(moves, get_nearest_enemy_dist, gamestate)->content;
+	if (gamestate->stage == STAGE_EZPZ)
+	{
+		*point = *(t_point*)moves->content;
+	}
+	else
+	{
+		*point = *(t_point*)lst_get_minby(moves, get_nearest_enemy_dist, gamestate)->content;
+	}
+	update_stage(gamestate, point);
 	ft_lstdel(&moves, NULL);
 
 	return (1);
