@@ -6,7 +6,7 @@
 #    By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/17 17:47:32 by juazouz           #+#    #+#              #
-#    Updated: 2019/01/03 18:51:11 by juazouz          ###   ########.fr        #
+#    Updated: 2019/01/07 19:22:31 by juazouz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFTDIR = libft
 LIBFTIDIR = $(LIBFTDIR)/includes
 LIBFT = libft.a
 
-NAME = filler
+NAME = juazouz.filler
 
 DEPS = $(IDIR)/filler.h
 

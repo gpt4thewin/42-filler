@@ -13,6 +13,6 @@ resources/
 *.trace
 
 # Project specific
-filler
+*.filler
 dumper
 visualisateur
