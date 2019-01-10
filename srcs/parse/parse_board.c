@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 16:03:24 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 18:15:23 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/10 17:09:15 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,37 +40,43 @@
 **	Parses the first line.
 */
 
-static void	parse_head(t_grid *board)
+static t_bool	parse_head(t_grid *board)
 {
 	int		width;
 	int		height;
 
-	expect_input_str("Plateau ");
-	width = read_number(' ');
-	height = read_number(':');
-	expect_input_lineend();
-	grid_init(board, width, height);
+	return (expect_input_str("Plateau ") &&
+			read_number(' ', &width) &&
+			width > 0 &&
+			read_number(':', &height) &&
+			height > 0 &&
+			expect_input_lineend() &&
+			grid_init(board, width, height));
 }
 
 /*
 **	Parses the second line.
 */
 
-static void	parse_grid_head(t_grid *board)
+static t_bool	parse_grid_head(t_grid *board)
 {
 	int		i;
 
-	expect_input_str("    ");
+	if (!expect_input_str("    "))
+		return (false);
 	i = 0;
 	while (i < board->width)
 	{
-		expect_input_char((i % 10) + '0');
+		if (!expect_input_char((i % 10) + '0'))
+			return (false);
 		i++;
 	}
-	expect_input_lineend();
+	if (!expect_input_lineend())
+		return (false);
+	return (true);
 }
 
-static void	parse_line_char(t_grid *board, t_point point, char c)
+static t_bool	parse_line_char(t_grid *board, t_point point, char c)
 {
 	if (c == '.')
 		set_cell_at(board, point, CELL_EMPTY);
@@ -83,7 +89,8 @@ static void	parse_line_char(t_grid *board, t_point point, char c)
 	else if (c == 'x')
 		set_cell_at(board, point, CELL_P2_NEW);
 	else
-		error(MSG_PARSE_ERROR);
+		return (false);
+	return (true);
 }
 
 /*
@@ -91,38 +98,45 @@ static void	parse_line_char(t_grid *board, t_point point, char c)
 **	and fills the board information.
 */
 
-static void	parse_line(t_grid *board, int lineno)
+static t_bool	parse_line(t_grid *board, int lineno)
 {
 	int		input_lineno;
 	int		i;
 	char	c;
 	t_point	point;
 
-	input_lineno = read_number_n(3);
-	check_eq(input_lineno, lineno, MSG_PARSE_ERROR);
-	expect_input_str(" ");
+	if (!read_number_n(3, &input_lineno) ||
+	input_lineno != lineno ||
+	!expect_input_str(" "))
+		return (false);
 	point.y = lineno;
 	i = 0;
 	while (i < board->width)
 	{
 		c = read_char();
 		point.x = i;
-		parse_line_char(board, point, c);
+		if (!parse_line_char(board, point, c))
+			return (false);
 		i++;
 	}
-	expect_input_lineend();
+	if (!expect_input_lineend())
+		return (false);
+	return (true);
 }
 
-void		parse_board(t_grid *board)
+t_bool			parse_board(t_grid *board)
 {
 	int		i;
 
-	parse_head(board);
-	parse_grid_head(board);
+	if (!parse_head(board) ||
+		!parse_grid_head(board))
+		return (false);
 	i = 0;
 	while (i < board->height)
 	{
-		parse_line(board, i);
+		if (!parse_line(board, i))
+			return (false);
 		i++;
 	}
+	return (true);
 }

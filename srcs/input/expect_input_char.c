@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 16:52:03 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 17:37:46 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/10 16:29:13 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
 **	string. Does not read beyond the string len.
 */
 
-void	expect_input_char(char expected)
+t_bool	expect_input_char(char expected)
 {
 	char	c;
 
 	c = read_char();
-	if (c != expected)
-		error(MSG_PARSE_ERROR);
+	return (c == expected);
 }

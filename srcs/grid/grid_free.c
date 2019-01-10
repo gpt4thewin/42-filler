@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:05:00 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/28 15:56:53 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/10 17:10:56 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	grid_free(t_grid *grid)
 {
-	free(grid->cells);
+	ft_memdel((void**)&grid->cells);
 }

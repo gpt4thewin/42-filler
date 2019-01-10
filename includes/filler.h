@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:32:25 by juazouz           #+#    #+#             */
-/*   Updated: 2019/01/03 18:58:53 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/10 17:18:19 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,59 +96,53 @@ struct	s_state
 **	Core.
 */
 
-void	error(char *msg);
-
 /*
 **	Utils.
 */
 
-void	grid_init(t_grid *board, int height, int width);
-void	grid_free(t_grid *board);
 int		can_place(t_grid *board, t_grid *piece, t_point *target, int playerid);
-char	get_cell_at(t_grid *grid, t_point point);
-void	set_cell_at(t_grid *grid, t_point point, char val);
-int		piece_in_bounds(t_grid *board, t_grid *piece, t_point point);
-int		get_next_cell(t_grid *board, t_point *point);
-void	read_next_line(char **line);
 t_point	point_add(t_point a, t_point b);
 int		point_dist(t_point a, t_point b);
 void	point_init(t_point *point);
-t_point	piece_center(t_grid *piece);
 int		player_has_cell(char cell, int playerid);
 int		player_is_enemy(int playerid, int other);
+
+/*
+**	Grid
+*/
+
+t_bool	grid_init(t_grid *board, int height, int width);
+void	grid_free(t_grid *board);
+char	get_cell_at(t_grid *grid, t_point point);
+void	set_cell_at(t_grid *grid, t_point point, char val);
+int		get_next_cell(t_grid *grid, t_point *point);
 
 /*
 **	Input.
 */
 
 char	read_char();
-void	expect_input_char(char expected);
-void	expect_input_str(char *str);
-void	expect_input_lineend(void);
-int		read_number_n(int n);
-int		read_number(char endchar);
+t_bool	expect_input_char(char expected);
+t_bool	expect_input_str(char *str);
+t_bool	expect_input_lineend(void);
+t_bool	read_number_n(int n, int *num);
+t_bool	read_number(char endchar, int *num);
 
 /*
 **	Piece.
 */
 
 void	piece_init(t_piece *piece, int height, int width);
+t_point	piece_center(t_grid *piece);
+int		piece_in_bounds(t_grid *board, t_grid *piece, t_point point);
 
 /*
 **	Parse.
 */
 
-void	read_head(int *id, char *name);
-void	parse_board(t_grid *board);
-void	parse_piece(t_grid *board);
-
-/*
-**	Assert.
-*/
-
-void	check_strncmp(char *s1, char *s2, unsigned int n, char *msg);
-void	check_eq(int a, int b, char *msg);
-void	check_is_true(int val, char *msg);
+t_bool	read_head(int *id, char *name);
+t_bool	parse_board(t_grid *board);
+t_bool	parse_piece(t_grid *board);
 
 /*
 **	Debug.

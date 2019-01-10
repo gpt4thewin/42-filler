@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 16:24:06 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 17:26:40 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/10 16:25:49 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **	[PLAYER_NAME]
 */
 
-static void	read_name(char *name)
+static t_bool	read_name(char *name)
 {
 	char	c;
 	size_t	len;
@@ -31,8 +31,9 @@ static void	read_name(char *name)
 		len++;
 	}
 	if (len == 0)
-		error(MSG_PARSE_ERROR_HEAD);
+		return (false);
 	name[len] = '\0';
+	return (true);
 }
 
 /*
@@ -42,11 +43,12 @@ static void	read_name(char *name)
 **	$$$ exec p1 : [PLAYER_NAME]
 */
 
-void		read_head(int *id, char *name)
+t_bool			read_head(int *id, char *name)
 {
-	expect_input_str("$$$ exec p");
-	*id = read_number_n(1);
-	expect_input_str(" : ");
-	read_name(name);
-	expect_input_lineend();
+	return (expect_input_str("$$$ exec p") &&
+			read_number_n(1, id) &&
+			(*id == 1 || *id == 2) &&
+			expect_input_str(" : ") &&
+			read_name(name) &&
+			expect_input_lineend());
 }

@@ -6,7 +6,7 @@
 /*   By: juazouz <juazouz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:29:38 by juazouz           #+#    #+#             */
-/*   Updated: 2018/12/19 17:30:25 by juazouz          ###   ########.fr       */
+/*   Updated: 2019/01/10 15:24:04 by juazouz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **	Expects the number of be finished by the specified character.
 */
 
-int		read_number(char endchar)
+t_bool	read_number(char endchar, int *num)
 {
 	int		res;
 	char	c;
@@ -35,7 +35,8 @@ int		read_number(char endchar)
 		else if (c == endchar)
 			break ;
 		else
-			error(MSG_PARSE_ERROR);
+			return (false);
 	}
-	return (res);
+	*num = res;
+	return (true);
 }
