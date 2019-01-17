@@ -11,3 +11,8 @@ territory).
 * On each turn, the VM will send to the AI the state of the board and the shape of the piece to place.
 * The AI must reply with the coordinates to place the piece.
 * If the reply is wrong, the VM terminates the AI and it loses the game.
+## Usage
+```console
+make
+./resources/filler_vm -f resources/maps/map01 -p1 ./juazouz.filler -p2 ./resources/players/superjeannot.filler
+```
