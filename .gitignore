@@ -9,10 +9,9 @@ test.sh
 tests/
 a.out
 *.dSYM/
-resources/
 *.trace
 
 # Project specific
-*.filler
+juazouz.filler
 dumper
 visualisateur
